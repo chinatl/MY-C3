@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <style>
+        div {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        .content {
+            width: 800px;
+            height: 800px;
+            margin: 100px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .layout {
+            display: inline-block;
+            float: left;
+            position: relative;
+            width: 300px;
+            height: 253px;
+            font-size: 0px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 35px inset;
+            overflow: hidden;
+            margin: 0px 80px 40px 0px;
+            background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(rgb(255, 255, 255)), color-stop(0.1, rgb(255, 255, 255)), to(rgb(243, 243, 243)));
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+            border-image: initial;
+            border-radius: 5px;
+        }
+
+        .view {
+            width: 300px;
+            height: 170px;
+            float: left;
+            position: relative;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            background: #333;
+            -webkit-perspective: 500px;
+            -moz-perspective: 500px;
+            -o-perspective: 500px;
+            -ms-perspective: 500px;
+            perspective: 500px
+        }
+
+        .view .slice {
+            width: 60px;
+            height: 100%;
+            z-index: 100;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            -ms-transform-origin: left center;
+            transform-origin: left center;
+            -webkit-transition: -webkit-transform 150ms ease-in-out;
+            -moz-transition: -moz-transform 150ms ease-in-out;
+            -o-transition: -o-transform 150ms ease-in-out;
+            -ms-transition: -ms-transform 150ms ease-in-out;
+            transition: transform 150ms ease-in-out
+        }
+
+        .view div.view-back {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            background: #fbfbfb;
+            z-index: 0
+        }
+
+        .view-back span {
+            display: block;
+            float: right;
+            padding: 5px 20px 5px;
+            width: 100%;
+            text-align: right;
+            font-size: 14px;
+            color: #696a70
+        }
+
+        .view-back span:first-child {
+            padding-top: 20px
+        }
+
+        .view-back a {
+            display: bock;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.4);
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 22px;
+            text-align: center;
+            font-weight: 700
+        }
+
+        .view-back a:hover {
+            color: #fff;
+            border-color: #fff
+        }
+
+        .view .s2,
+        .view .s3,
+        .view .s4,
+        .view .s5 {
+            background-size: 300px 170px;
+            -webkit-transform: translate3d(60px, 0, 0);
+            -moz-transform: translate3d(60px, 0, 0);
+            -o-transform: translate3d(60px, 0, 0);
+            -ms-transform: translate3d(60px, 0, 0);
+            transform: translate3d(60px, 0, 0)
+        }
+
+        .view .s1 {
+            background-size: 300px 170px;
+            background-position: 0 0
+        }
+
+        .view .s2 {
+            background-position: -60px 0
+        }
+
+        .view .s3 {
+            background-position: -120px 0
+        }
+
+        .view .s4 {
+            background-position: -180px 0
+        }
+
+        .view .s5 {
+            background-position: -240px 0
+        }
+
+        .view .overlay {
+            width: 60px;
+            height: 100%;
+            opacity: 0;
+            position: absolute;
+            -webkit-transition: opacity 150ms ease-in-out;
+            -moz-transition: opacity 150ms ease-in-out;
+            -o-transition: opacity 150ms ease-in-out;
+            -ms-transition: opacity 150ms ease-in-out;
+            transition: opacity 150ms ease-in-out
+        }
+
+        .view:hover .overlay {
+            opacity: 1
+        }
+
+        .view img {
+            position: absolute;
+            z-index: 0;
+            -webkit-transition: left .3s ease-in-out;
+            -o-transition: left .3s ease-in-out;
+            -moz-transition: left .3s ease-in-out;
+            -ms-transition: left .3s ease-in-out;
+            transition: left .3s ease-in-out
+        }
+
+        .view:hover .s2 {
+            -webkit-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -45deg);
+            -moz-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -45deg);
+            -o-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -45deg);
+            -ms-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -45deg);
+            transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -45deg)
+        }
+
+        .view:hover .s3,
+        .view:hover .s5 {
+            -webkit-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, 90deg);
+            -moz-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, 90deg);
+            -o-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, 90deg);
+            -ms-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, 90deg);
+            transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, 90deg)
+        }
+
+        .view:hover .s4 {
+            -webkit-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -90deg);
+            -moz-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -90deg);
+            -o-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -90deg);
+            -ms-transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -90deg);
+            transform: translate3d(59px, 0, 0) rotate3d(0, 1, 0, -90deg)
+        }
+
+        .view .s1>.overlay {
+            background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0) 100%);
+            background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0) 100%);
+            background: -o-linear-gradient(right, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0) 100%);
+            background: -ms-linear-gradient(right, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(right, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0) 100%)
+        }
+
+        .view .s2>.overlay {
+            background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 100%);
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 100%);
+            background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 100%);
+            background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 100%);
+            background: linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 100%)
+        }
+
+        .view .s3>.overlay {
+            background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.2) 100%);
+            background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.2) 100%);
+            background: -o-linear-gradient(right, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.2) 100%);
+            background: -ms-linear-gradient(right, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.2) 100%);
+            background: linear-gradient(right, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0.2) 100%)
+        }
+
+        .view .s4>.overlay {
+            background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%);
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%);
+            background: -o-linear-gradient(left, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%);
+            background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(left, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 100%)
+        }
+
+        .view .s5>.overlay {
+            background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 100%);
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 100%);
+            background: -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 100%);
+            background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 100%);
+            background: linear-gradient(left, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 100%)
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="layout">
+            <div class="view">
+                <div class="view-back"><span data-icon="">星</span> <span data-icon="">☀️</span></div>
+                <div class="slice s1" style="background-image: url(index.png);"><span class="overlay"></span>
+                    <div class="slice s2" style="background-image: url(index.png);"><span class="overlay"></span>
+                        <div class="slice s3" style="background-image: url(index.png);"><span class="overlay"></span>
+                            <div class="slice s4" style="background-image: url(index.png);"><span class="overlay"></span>
+                                <div class="slice s5" style="background-image: url(index.png);"><span class="overlay"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

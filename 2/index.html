@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box
+    }
+
+    .content {
+        width: 800px;
+        height: 800px;
+        margin: 100px auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    li {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        text-align: center;
+        background: #f4f4f4;
+        box-shadow: 0 0 0 10px rgba(253, 130, 42, 0.8), 0px 0 0 20px #f5f5f5;
+        float: left;
+        position: relative;
+        margin-left: 67px;
+        list-style: none;
+    }
+
+    .gear:before {
+        content: '';
+        width: 26px;
+        height: 26px;
+        display: block;
+        margin: 0;
+        position: absolute;
+        box-shadow: 37px 115px 0 #f5f5f5, 37px -41px 0 #f5f5f5, -41px 37px 0 #f5f5f5, 115px 37px 0 #f5f5f5;
+        border-radius: 20%;
+        -webkit-transform-origin: 50px 50px;
+        transform-origin: 50px 50px;
+    }
+
+    .gear .tips {
+        font-size: 16px;
+        margin-top: 10px;
+        color: #fd822a;
+    }
+
+    .gear div h4 {
+        color: #666;
+        font-size: 13px;
+        text-shadow: 1px 1px 0 #fff;
+    }
+
+    div {
+        padding-top: 25px;
+    }
+
+    .reverse:before {
+        animation: scope_ccw 10s linear infinite;
+        -moz-animation: scope_ccw 10s linear infinite;
+        -webkit-animation: scope_ccw 10s linear infinite;
+        -o-animation: scope_ccw 10s linear infinite
+    }
+
+    @keyframes scope_ccw {
+        from {
+            transform: rotate(22.5deg)
+        }
+        to {
+            transform: rotate(-382.5deg)
+        }
+    }
+
+    .positive:before {
+        animation: scope_cw 10s linear infinite;
+        -moz-animation: scope_cw 10s linear infinite;
+        -webkit-animation: scope_cw 10s linear infinite;
+        -o-animation: scope_cw 10s linear infinite
+    }
+    @keyframes scope_cw {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+</style>
+
+<body>
+    <div class="content">
+        <ul>
+            <li class="gear reverse">
+                <div>
+                    <h4>野有蔓草</h4>
+                    <p class="tips">零露漙兮</p>
+                </div>
+            </li>
+            <li class="gear positive">
+                <div>
+                    <h4>有美一人</h4>
+                    <p class="tips">清扬婉兮</p>
+                </div>
+            </li>
+            <li class="gear reverse">
+                <div>
+                    <h4>邂逅相遇</h4>
+                    <p class="tips">适我愿兮</p>
+                </div>
+            </li>
+            <li class="gear positive">
+                <div>
+                    <h4>野有蔓草</h4>
+                    <p class="tips">零露瀼瀼</p>
+                </div>
+            </li>>
+<!--
+            <li class="gear reverse">
+                <div>
+                    <h4>有美一人</h4>
+                    <p class="tips">婉如清扬</p>
+                </div>
+            </li>
+            <li class="gear positive">
+                <div>
+                    <h4>邂逅相遇</h4>
+                    <p class="tips">与子偕臧</p>
+                </div>
+            </li>
+-->
+        </ul>
+    </div>
+
+</body>
+
+</html>
